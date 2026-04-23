@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:
+  # Contenedor 1: La Base de Datos
+  db:
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: emuhub_admin
+      MYSQL_DATABASE: emuhub_db
+      MYSQL_USER: emuhub_user
+      MYSQL_PASSWORD: emuhub_password
+
+  # Contenedor 2: El WordPress
+  wordpress:
+    image: wordpress:latest
+    ports:
+      - "8080:80"
+    environment:
+      WORDPRESS_DB_HOST: db:3306
+      WORDPRESS_DB_USER: emuhub_user
+      WORDPRESS_DB_PASSWORD: emuhub_password
+      WORDPRESS_DB_NAME: emuhub_db
+    depends_on:
+      - db
