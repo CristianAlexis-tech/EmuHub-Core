@@ -1,0 +1,2 @@
+# EmuHub-Core
+Proyecto EmuHub
